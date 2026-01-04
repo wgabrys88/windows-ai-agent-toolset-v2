@@ -1,0 +1,121 @@
+NOTE ABOUT THIS SPECIFIC TEST:
+This test was performed on non NVIDIA laptop, it has only Intel Iris Xe Graphics,
+this is why the speed of execution is slow. The test was observed by human (me)
+and I can confirm that the task was performed - OK
+- in the end mouse pointer was on the bottom-right area (there is the datetime clock
+on the right side of the taskbar - and the mouse pointer was like a little bit to the right and down,
+from the top-left corner of that datetime clock "widget") I cannot provide screenshot from this test but
+I have verified it by my eyes.
+- in the created png files, in the 001 one the cursor was in I shape exactly where i left it before executing command
+and running test, in the 002 file the cursor was in that datetime clock area as described earlier
+
+It was run on:
+System Windows 11, monitor 1080p, display scale 125% (THIS CONFIRMS DPI AWARENESS MECHANISM - OK)
+
+
+
+CMD:
+python script_with_mouse_pointer_capture.py test_scenarios.txt 7
+
+OUTPUT:
+2026-01-04 10:36:34,280 INFO Loaded scenario 7
+2026-01-04 10:36:34,280 INFO Using scenario 7 from test_scenarios.txt
+2026-01-04 10:36:34,280 INFO System prompt: You are an AI controlling a Windows 11 laptop. You interact with the computer exclusively through tool calls. Available tools: take_screenshot (captur...
+2026-01-04 10:36:34,280 INFO Task prompt: Look at the screen, then move cursor to near the bottom-right corner (position 950, 950) and verify it's visible there.
+2026-01-04 10:36:34,280 INFO ================================================================================
+2026-01-04 10:36:34,280 INFO STEP 1 - Sending request to model
+2026-01-04 10:36:34,281 INFO --------------------------------------------------------------------------------
+2026-01-04 10:36:34,281 INFO Current conversation has 2 messages
+2026-01-04 10:36:34,281 INFO   [0] SYSTEM: You are an AI controlling a Windows 11 laptop. You interact with the computer exclusively through tool calls. Available tools: take_screenshot (captures current screen with visible cursor), move_mouse...
+2026-01-04 10:36:34,281 INFO   [1] USER: Look at the screen, then move cursor to near the bottom-right corner (position 950, 950) and verify it's visible there.
+2026-01-04 10:36:34,281 INFO --------------------------------------------------------------------------------
+2026-01-04 10:36:40,038 INFO STEP 1 - Received response from model
+2026-01-04 10:36:40,038 INFO --------------------------------------------------------------------------------
+2026-01-04 10:36:40,038 INFO   TOOL_CALLS: 1 requested
+2026-01-04 10:36:40,039 INFO     └─ [764120075] take_screenshot({})       
+2026-01-04 10:36:40,039 INFO ================================================================================
+2026-01-04 10:36:40,039 INFO Executing tool: take_screenshot
+2026-01-04 10:36:44,220 INFO   → Screenshot captured: 1920x1080, saved as dump_screen_0001.png
+2026-01-04 10:36:44,622 INFO ================================================================================
+2026-01-04 10:36:44,623 INFO STEP 2 - Sending request to model
+2026-01-04 10:36:44,623 INFO --------------------------------------------------------------------------------
+2026-01-04 10:36:44,624 INFO Current conversation has 5 messages
+2026-01-04 10:36:44,624 INFO   [0] SYSTEM: You are an AI controlling a Windows 11 laptop. You interact with the computer exclusively through tool calls. Available tools: take_screenshot (captures current screen with visible cursor), move_mouse...
+2026-01-04 10:36:44,625 INFO   [1] USER: Look at the screen, then move cursor to near the bottom-right corner (position 950, 950) and verify it's visible there.
+2026-01-04 10:36:44,625 INFO   [2] ASSISTANT:
+2026-01-04 10:36:44,626 INFO   [3] TOOL: ok file=dump_screen_0001.png     
+2026-01-04 10:36:44,626 INFO       └─ tool_call_id: 764120075
+2026-01-04 10:36:44,627 INFO   [4] USER: TEXT: screen | IMAGE: [BASE64_PNG]
+2026-01-04 10:36:44,627 INFO --------------------------------------------------------------------------------
+2026-01-04 10:38:04,331 INFO STEP 2 - Received response from model
+2026-01-04 10:38:04,332 INFO --------------------------------------------------------------------------------
+2026-01-04 10:38:04,332 INFO   TOOL_CALLS: 1 requested
+2026-01-04 10:38:04,332 INFO     └─ [784064391] move_mouse({"x": 950, "y": 950})
+2026-01-04 10:38:04,332 INFO ================================================================================
+2026-01-04 10:38:04,333 INFO Executing tool: move_mouse
+2026-01-04 10:38:04,394 INFO   → Moved mouse to norm(950,950) → px(1823,1025), actual cursor: px(1823,1025) norm(950,950)
+2026-01-04 10:38:04,795 INFO ================================================================================
+2026-01-04 10:38:04,796 INFO STEP 3 - Sending request to model
+2026-01-04 10:38:04,797 INFO --------------------------------------------------------------------------------
+2026-01-04 10:38:04,797 INFO Current conversation has 7 messages
+2026-01-04 10:38:04,798 INFO   [0] SYSTEM: You are an AI controlling a Windows 11 laptop. You interact with the computer exclusively through tool calls. Available tools: take_screenshot (captures current screen with visible cursor), move_mouse...
+2026-01-04 10:38:04,798 INFO   [1] USER: Look at the screen, then move cursor to near the bottom-right corner (position 950, 950) and verify it's visible there.
+2026-01-04 10:38:04,799 INFO   [2] ASSISTANT:
+2026-01-04 10:38:04,799 INFO   [3] TOOL: ok file=dump_screen_0001.png     
+2026-01-04 10:38:04,799 INFO       └─ tool_call_id: 764120075
+2026-01-04 10:38:04,800 INFO   [4] USER: TEXT: screen | IMAGE: [BASE64_PNG]
+2026-01-04 10:38:04,800 INFO   [5] ASSISTANT:
+2026-01-04 10:38:04,801 INFO   [6] TOOL: ok cursor_px=1823,1025 cursor_norm=950,950
+2026-01-04 10:38:04,801 INFO       └─ tool_call_id: 784064391
+2026-01-04 10:38:04,802 INFO --------------------------------------------------------------------------------
+2026-01-04 10:38:08,333 INFO STEP 3 - Received response from model
+2026-01-04 10:38:08,333 INFO --------------------------------------------------------------------------------
+2026-01-04 10:38:08,334 INFO   TOOL_CALLS: 1 requested
+2026-01-04 10:38:08,335 INFO     └─ [990848519] take_screenshot({})       
+2026-01-04 10:38:08,335 INFO ================================================================================
+2026-01-04 10:38:08,335 INFO Executing tool: take_screenshot
+2026-01-04 10:38:12,689 INFO   → Screenshot captured: 1920x1080, saved as dump_screen_0002.png
+2026-01-04 10:38:13,090 INFO ================================================================================
+2026-01-04 10:38:13,091 INFO STEP 4 - Sending request to model
+2026-01-04 10:38:13,091 INFO --------------------------------------------------------------------------------
+2026-01-04 10:38:13,092 INFO Current conversation has 9 messages
+2026-01-04 10:38:13,092 INFO   [0] SYSTEM: You are an AI controlling a Windows 11 laptop. You interact with the computer exclusively through tool calls. Available tools: take_screenshot (captures current screen with visible cursor), move_mouse...
+2026-01-04 10:38:13,093 INFO   [1] USER: Look at the screen, then move cursor to near the bottom-right corner (position 950, 950) and verify it's visible there.
+2026-01-04 10:38:13,093 INFO   [2] ASSISTANT:
+2026-01-04 10:38:13,094 INFO   [3] TOOL: ok file=dump_screen_0001.png     
+2026-01-04 10:38:13,094 INFO       └─ tool_call_id: 764120075
+2026-01-04 10:38:13,095 INFO   [4] ASSISTANT:
+2026-01-04 10:38:13,095 INFO   [5] TOOL: ok cursor_px=1823,1025 cursor_norm=950,950
+2026-01-04 10:38:13,096 INFO       └─ tool_call_id: 784064391
+2026-01-04 10:38:13,096 INFO   [6] ASSISTANT:
+2026-01-04 10:38:13,097 INFO   [7] TOOL: ok file=dump_screen_0002.png     
+2026-01-04 10:38:13,097 INFO       └─ tool_call_id: 990848519
+2026-01-04 10:38:13,097 INFO   [8] USER: TEXT: screen | IMAGE: [BASE64_PNG]
+2026-01-04 10:38:13,098 INFO --------------------------------------------------------------------------------
+2026-01-04 10:39:35,406 INFO STEP 4 - Received response from model
+2026-01-04 10:39:35,407 INFO --------------------------------------------------------------------------------
+2026-01-04 10:39:35,407 INFO   TOOL_CALLS: 1 requested
+2026-01-04 10:39:35,407 INFO     └─ [374624112] move_mouse({"x": 950, "y": 950})
+2026-01-04 10:39:35,407 INFO ================================================================================
+2026-01-04 10:39:35,408 INFO Executing tool: move_mouse
+2026-01-04 10:39:35,468 INFO   → Moved mouse to norm(950,950) → px(1823,1025), actual cursor: px(1823,1025) norm(950,950)
+2026-01-04 10:39:35,869 INFO ================================================================================
+2026-01-04 10:39:35,870 INFO STEP 5 - Sending request to model
+2026-01-04 10:39:35,870 INFO --------------------------------------------------------------------------------
+2026-01-04 10:39:35,871 INFO Current conversation has 11 messages
+2026-01-04 10:39:35,871 INFO   [0] SYSTEM: You are an AI controlling a Windows 11 laptop. You interact with the computer exclusively through tool calls. Available tools: take_screenshot (captures current screen with visible cursor), move_mouse...
+2026-01-04 10:39:35,872 INFO   [1] USER: Look at the screen, then move cursor to near the bottom-right corner (position 950, 950) and verify it's visible there.
+2026-01-04 10:39:35,872 INFO   [2] ASSISTANT:
+2026-01-04 10:39:35,872 INFO   [3] TOOL: ok file=dump_screen_0001.png     
+2026-01-04 10:39:35,873 INFO       └─ tool_call_id: 764120075
+2026-01-04 10:39:35,873 INFO   [4] ASSISTANT:
+2026-01-04 10:39:35,874 INFO   [5] TOOL: ok cursor_px=1823,1025 cursor_norm=950,950
+2026-01-04 10:39:35,876 INFO   [10] TOOL: ok cursor_px=1823,1025 cursor_norm=950,950
+2026-01-04 10:39:35,876 INFO       └─ tool_call_id: 374624112
+2026-01-04 10:39:35,876 INFO --------------------------------------------------------------------------------
+2026-01-04 10:39:41,068 INFO STEP 5 - Received response from model
+2026-01-04 10:39:41,068 INFO --------------------------------------------------------------------------------
+2026-01-04 10:39:41,068 INFO   ASSISTANT: I have analyzed the screen and verified the cursor position. The cursor is at the bottom-right corner of the screen, which is at coordinates (950, 950) in the normalized system. The cursor is visible ...
+2026-01-04 10:39:41,068 INFO   NO TOOL CALLS - Conversation ending
+2026-01-04 10:39:41,068 INFO ================================================================================
+2026-01-04 10:39:41,069 INFO Done: No tool calls in response
